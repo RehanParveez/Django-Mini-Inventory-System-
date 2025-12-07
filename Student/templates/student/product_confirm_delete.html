@@ -1,0 +1,14 @@
+{% extends 'Student/parent.html'%}
+
+{% block content %}
+<h2> You want to delete this Product?</h2>
+
+<p><strong>{{product.name}}</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'product_detail' product.id %}">Cancel</a>
+</form>
+{% endblock %}
+

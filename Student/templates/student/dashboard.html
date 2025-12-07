@@ -1,0 +1,11 @@
+{% extends "Student/parent.html" %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<p>Total Products: {{ total_products }}</p>
+<p>Low Stock Products: {{ low_stock }}</p>
+<p>Total Quantity: {{ total_quantity }}</p>
+
+<a href="{% url 'product_list' %}">View All Products</a>
+{% endblock %}

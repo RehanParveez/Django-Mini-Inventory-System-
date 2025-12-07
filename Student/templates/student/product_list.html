@@ -1,0 +1,22 @@
+
+{% extends "Student/parent.html" %}
+
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+<h2>All Prodcuts</h2>
+
+{% for product in products %}
+    <h3><a href="{% url 'product_detail' product.id %}"></a></h3>
+    <p>Name: {{product.name}}</p>
+    <p>Quantity: {{product.quantity}}</p>
+    <br>
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+

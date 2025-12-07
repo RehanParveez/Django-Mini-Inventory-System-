@@ -1,0 +1,29 @@
+
+{% extends "Student/parent.html" %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block content %}
+<h2>{{product.name}}</h2>
+<p>{{product.category}}</p>
+
+<hr>
+<a href="{% url 'product_update' product.id %}">Edit</a><br>
+
+<form method="POST" action="{% url 'product_delete' product.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+<hr>
+<br>
+<form method="POST" action="{% url 'sell_product' product.id %}">
+    {% csrf_token %}
+    <input type="number" name="amount" value="1" min="1">
+    <button type="submit">Sell</button>
+</form>
+
+<br>
+<hr>
+
+<a href="{% url 'product_list' %}">Back to Products</a>
+{% endblock %}
