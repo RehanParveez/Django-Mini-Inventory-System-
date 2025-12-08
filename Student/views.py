@@ -280,7 +280,7 @@ class DashboardView(TemplateView):
         context = super().get_context_data(**kwargs)
         
         context['total_products'] = Products.objects.count()
-        context['low_stock_count'] = Products.objects.filter(quantity__lt=5).count()
+        context['low_stock'] = Products.objects.filter(quantity__lt=5).count()
         context['total_quantity'] = Products.objects.aggregate(total=Sum('quantity'))['total'] or 0
         return context
     
