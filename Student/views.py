@@ -10,6 +10,21 @@
 # for i in currency:
 #     result = amount // i
 #     print(result)
+
+
+# Correct
+
+# currency = ['5000', '1000', '500', '100', '50', '20', '10', '5', '2', '1']
+# amount = int(input("Enter you amount"))
+
+# for i in currency:
+#     result = amount // currency
+#     print(f"{i} = {result}")
+#     amount = amount % i
+
+
+    
+
     
 
 
@@ -41,7 +56,28 @@
 # print(reversed(rows))
 
 
+# Correct
 
+# rows = []
+
+# matrix = [
+#     [1, 2, 3, 4],
+#     [5, 6, 7, 8],
+#     [9, 10, 11, 12],
+#     [13, 14, 15, 16]
+# ]
+
+# for i in matrix:
+#     if all(1 <= j <= 100 for j in i):
+#         if sum(i) >= 150:
+#             rows.append(i)
+#     else:
+#         raise ValueError('Invalid matrix, enter element between 1 and 100')
+    
+# rows.sort(key=sum, reverse=True)
+
+
+    
 
 # Problem 3: Group Anagrams
 # Given a list of strings, group the strings that are anagrams of each other.
@@ -68,6 +104,25 @@
 
 # result = list(merge.i)
 # print(result)
+
+
+# Correct
+
+# from collections import defaultdict
+
+# words = ["eat","tea","tan","ate","nat","bat"]
+# merge = defaultdict(list)
+
+# for i in words:
+#     alphabet = ''.join(sorted(i))
+#     merge = [alphabet].append(i)
+    
+# result = list(merge.values())
+# print(result)
+    
+
+
+
 
 
 
