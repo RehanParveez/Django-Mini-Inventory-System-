@@ -17,10 +17,10 @@
 # currency = [5000, 1000, 500, 100, 50, 20, 10, 5, 2, 1]
 # amount = int(input("Enter you amount"))
 
-# for notes in currency:
-#     result = amount // notes
-#     print(f"{notes} = {result}")
-#     amount = amount % note
+# for i in currency:
+#     result = amount // i
+#     print(f"{i} = {result}")
+#     amount = amount % i
 
 
     
@@ -72,7 +72,7 @@
 #         if sum(i) >= 150:
 #             rows.append(i)
 #     else:
-#         raise ValueError('Invalid matrix, enter element between 1 and 100')
+#         raise ValueError('wrong, enter b/w 1 and 100')
     
 # rows.sort(key=sum, reverse=True)
 # print(rows)
