@@ -198,7 +198,7 @@ class OwnLoginView(View):
         return render(request, self.template_name, {'form': form})
     
     def post(self, request):
-        form = AuthenticationForm(data = request.POST)
+        form = AuthenticationForm(data=request.POST)
     
         if form.is_valid():
             user = form.get_user()
@@ -283,7 +283,3 @@ class DashboardView(TemplateView):
         context['low_stock'] = Products.objects.filter(quantity__lt=5).count()
         context['total_quantity'] = Products.objects.aggregate(total=Sum('quantity'))['total'] or 0
         return context
-    
-    
-    
-
