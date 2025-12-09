@@ -24,7 +24,7 @@
 
 
     
-
+  
     
 
 
@@ -42,13 +42,13 @@
 # ]
 
 # rows = []
-# sum = []
+
 
 # for i in list_2d44:    
 #     if all(0<=j<100 for j in i):
 #         rows += i
 #     for i in list_2d44:
-#       if all(sum(i) >= 150):
+#       if sum(i) >= 150:
 #          i >= 150
 #          sum += 1
 #     else:
@@ -123,7 +123,7 @@
     
 # result = list(merge.values())
 # print(result)
-    
+
 
 
 
