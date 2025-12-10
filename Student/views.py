@@ -8,7 +8,7 @@
 # amount = input('enter your decideamount')
 # currency = ['1000', '500', '100', '50', '20', '10', '5', '2','1']
 # for i in currency:
-#     result = amount // i
+#     result = amount / i
 #     print(result)
 
 
@@ -61,7 +61,7 @@
 # rows = []
 
 # list_2d44  = [
-#     [1, 2, 3, 4],
+#     [18, 2, 3, 4],
 #     [5, 6, 7, 8],
 #     [9, 10, 11, 12],
 #     [13, 14, 15, 16]
@@ -112,17 +112,17 @@
 
 # Correct
 
-# from collections import defaultdict
+from collections import defaultdict
 
-# words = ["eat","tea","tan","ate","nat","bat"]
-# merge = defaultdict(list)
+words = ["eat","tea","tan","ate","nat","bat"]
+merge = defaultdict(list)
 
-# for i in words:
-#     alphabet = ''.join(sorted(i))
-#     merge = [alphabet].append(i)
+for i in words:
+    alphabet = ''.join(sorted(i))
+    merge[alphabet].append(i)
     
-# result = list(merge.values())
-# print(result)
+result = list(merge.values())
+print(result)
 
 
 
