@@ -60,14 +60,14 @@
 
 # rows = []
 
-# matrix = [
+# list_2d44  = [
 #     [1, 2, 3, 4],
 #     [5, 6, 7, 8],
 #     [9, 10, 11, 12],
 #     [13, 14, 15, 16]
 # ]
 
-# for i in matrix:
+# for i in list_2d44:
 #     if all(1 <= j <= 100 for j in i):
 #         if sum(i) >= 150:
 #             rows.append(i)
@@ -158,132 +158,133 @@
 
 # Tests: Aggregation, filtering, business logic.
 
-# from django.shortcuts import render, redirect, get_object_or_404
-# from Student.forms import ProductForm, RegisterForm
-# from Student.models import Products
-# from django.contrib.auth import views
-# from django.views import View
-# from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-# from django.db.models import Sum
-# from django.contrib.auth import login
-# from django.contrib import messages
-# from django.contrib.auth.forms import AuthenticationForm
-# from django.urls import reverse_lazy
-# from django.contrib.auth.views import LogoutView
+from django.shortcuts import render, redirect, get_object_or_404
+from Student.forms import ProductForm, RegisterForm
+from Student.models import Products
+from django.contrib.auth import views
+from django.views import View
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
+from django.db.models import Sum
+from django.contrib.auth import login
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LogoutView
 
 
 
 
-# class RegisterationView(View):
-#     template_name = 'Student/register.html'
+class RegisterationView(View):
+    template_name = 'Student/register.html'
     
-#     def get(self, request, *args, **kwargs):
-#         if request.method == 'GET':
-#             form = RegisterForm()
-#             return render(request, self.template_name, {'form': form})
+    def get(self, request, *args, **kwargs):
+        if request.method == 'GET':
+            form = RegisterForm()
+            return render(request, self.template_name, {'form': form})
     
-#     def post(self, request, *args, **kwargs):
-#         form = RegisterForm(request.POST)
+    def post(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST)
         
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, "Account created successfully!")
-#             return redirect('login')
-#         return render(request, self.template_name, {'form': form})
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Account created successfully!")
+            return redirect('login')
+        return render(request, self.template_name, {'form': form})
     
 
 
 
-# class OwnLoginView(View):
-#     template_name = 'Student/login.html'
+class OwnLoginView(View):
+    template_name = 'Student/login.html'
     
-#     def get(self ,request):
-#         form = AuthenticationForm()
-#         return render(request, self.template_name, {'form': form})
+    def get(self ,request):
+        form = AuthenticationForm()
+        return render(request, self.template_name, {'form': form})
     
-#     def post(self, request):
-#         form = AuthenticationForm(data=request.POST)
+    def post(self, request):
+        form = AuthenticationForm(data=request.POST)
     
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect('product_list')
-#         return render(request, self.template_name, {'form': form})
-    
-
-# class OwnLogoutView(LogoutView):
-#     next_page = 'product_list'
-#     template_name = 'Student/logout.html'
-
-
-
-# class ProductListView(ListView):
-#     model = Products
-#     template_name = 'Student/product_list.html'
-#     context_object_name = 'products'
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('product_list')
+        return render(request, self.template_name, {'form': form})
     
 
-# class ProductDetailView(DetailView):
-#     model = Products
-#     template_name = 'Student/product_detail.html'
-#     context_object_name = 'product'
+class OwnLogoutView(LogoutView):
+    next_page = 'product_list'
+    template_name = 'Student/logout.html'
+
+
+
+class ProductListView(ListView):
+    model = Products
+    template_name = 'Student/product_list.html'
+    context_object_name = 'products'
     
 
-# class ProductCreateView(CreateView):
-#     model = Products
-#     fields = ['name', 'quantity', 'category',]
-#     template_name = 'Student/product_create.html'
-#     success_url = reverse_lazy('product_list')
-    
-    
-# class ProductUpdateView(UpdateView):
-#     model = Products
-#     fields = ['name', 'quantity', 'category']
-#     template_name = 'Student/product_update.html'
-#     success_url = reverse_lazy('product_list')
-    
-    
-# class ProductDeleteView(DeleteView):
-#     model = Products
-#     template_name = 'Student/product_confirm_delete.html'
-#     success_url = reverse_lazy('product_list')
+class ProductDetailView(DetailView):
+    model = Products
+    template_name = 'Student/product_detail.html'
+    context_object_name = 'product'
     
 
-# class SellProductView(View):
-#     def post(self, request, pk):
-#         product = get_object_or_404(Products, pk=pk)
-#         amount = int(request.POST.get('amount', 1))
+class ProductCreateView(CreateView):
+    model = Products
+    fields = ['name', 'quantity', 'category',]
+    template_name = 'Student/product_create.html'
+    success_url = reverse_lazy('product_list')
+    
+    
+class ProductUpdateView(UpdateView):
+    model = Products
+    fields = ['name', 'quantity', 'category']
+    template_name = 'Student/product_update.html'
+    success_url = reverse_lazy('product_list')
+    context_object_name = 'product'
+    
+    
+class ProductDeleteView(DeleteView):
+    model = Products
+    template_name = 'Student/product_confirm_delete.html'
+    success_url = reverse_lazy('product_list')
+    
+
+class SellProductView(View):
+    def post(self, request, pk):
+        product = get_object_or_404(Products, pk=pk)
+        amount = int(request.POST.get('amount', 1))
         
-#         if 0 < amount <= product.quantity:
-#             product.quantity -= amount
-#             product.save()
-#             messages.success(request, "product sold successfully")
-#         else:
-#             messages.error(request, 'invalid quantity')
+        if 0 < amount <= product.quantity:
+            product.quantity -= amount
+            product.save()
+            messages.success(request, "product sold successfully")
+        else:
+            messages.error(request, 'invalid quantity')
     
-#         return redirect('product_detail', pk=pk)
-    
-
-# class LowStockView(View):
-#     model = Products
-#     template_name = 'Student/product_low_stock.html'
-#     context_object_name = 'products'
-    
-#     def get_queryset(self):
-#         return Products.objects.filter(quantity__lt=5)
-    
-#     def get(self, request):
-#         products = self.get_queryset()
-#         return render(request, self.template_name, {self.context_object_name: products})
+        return redirect('product_detail', pk=pk)
     
 
-# class DashboardView(TemplateView):
-#     template_name = 'Student/dashboard.html'
+class LowStockView(View):
+    model = Products
+    template_name = 'Student/product_low_stock.html'
+    context_object_name = 'products'
     
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
+    def get_queryset(self):
+        return Products.objects.filter(quantity__lt=5)
+    
+    def get(self, request):
+        products = self.get_queryset()
+        return render(request, self.template_name, {self.context_object_name: products})
+    
+
+class DashboardView(TemplateView):
+    template_name = 'Student/dashboard.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         
-#         context['total_products'] = Products.objects.count()
-#         context['low_stock'] = Products.objects.filter(quantity__lt=5).count()
-#         context['total_quantity'] = Products.objects.aggregate(total=Sum('quantity'))['total'] or 0
-#         return context
+        context['total_products'] = Products.objects.count()
+        context['low_stock'] = Products.objects.filter(quantity__lt=5).count()
+        context['total_quantity'] = Products.objects.aggregate(total=Sum('quantity'))['total'] or 0
+        return context

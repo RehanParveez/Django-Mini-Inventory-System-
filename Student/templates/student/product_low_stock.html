@@ -1,7 +1,7 @@
 {% extends "Student/parent.html" %}
 
 {% block content %}
-<h2>Low Stock Items</h2>
+<h2>Low Stock Items {{products.count}} </h2>
 
 {% for product in products %}
     <p>{{ product.name }} {{ product.quantity }}</p>
